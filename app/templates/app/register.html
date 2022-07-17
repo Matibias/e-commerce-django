@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2" style="height: 69.5vh;">
+            </div>
+            <div class="col-sm-8 pt-5">
+                <div class="container">
+                    <h2 class="color-verde-oscuro">Cree su cuenta</h2>
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <label for="nombreus">Nombre de usuario:</label>
+                            <input type="nombreus" class="form-control" id="nombreus" placeholder="Ingrese su nombre de usuario" name="nombreus">
+                        </div>
+                            <div class="form-group">
+                            <label for="email">Correo Electronico:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingrese su correo" name="email">
+                        </div>
+                        <div>
+                            <div class="form-group">
+                            <label for="fecha">Ingrese su fecha de nacimiento:</label>
+                            <input type="email" class="form-control" id="email" placeholder="DD/MM/AAAA" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Contraseña:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd">
+                        </div>
+                      <div class="form-group">
+                            <label for="pwd">Ingrese nuevamente su contraseña:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd">
+                        </div>
+                        <a href="{% url 'registrado' %}" type="ingreso-login" class="btn btn-success">Registrarse</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+         </div>
+        </div>
+        {%endblock%}

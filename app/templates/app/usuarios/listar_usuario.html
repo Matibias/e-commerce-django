@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+{% load humanize %}
+<table class="table table-condensed table-striped">
+    <thead>  
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>EMAIL</th>
+            <th>TIPO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in listaUsuario %}
+        <tr>
+            <td>{{ aux.id }}</td>
+            <td>{{ aux.nombre_usuario | title }}</td>
+            <td>{{ aux.apellido_usuario | intcomma }}</td>
+            <td>{{ aux.username }}</td>
+            <td>{{ aux.contraseña_usuario }}</td>
+            <td>{{ aux.correo_usuario }}</td>
+            <td>{{ aux.tipo_usuario }}</td>
+            <td>
+               <a href="{% url 'modificarusuario' aux.id %}" class="btn btn-primary">Modificar</a>
+               <a href="{% url 'eliminarusuario' aux.id %}" class="btn btn-danger">Eliminar</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

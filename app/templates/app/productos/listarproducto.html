@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+{% load humanize %}
+<table class="table table-condensed table-striped">
+    <thead>  
+        <tr>
+            <th>CODIGO</th>
+            <th>NOMBRE</th>
+            <th>PRECIO</th>
+            <th>STOCK</th>
+            <th>DESCRIPCION</th>
+            <th>TIPO</th>
+            <th>IMAGEN</th>
+            <th>FECHA INGRESO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in listaProductos %}
+        <tr>
+            <td>{{ aux.codigo }}</td>
+            <td>{{ aux.nombre | title }}</td>
+            <td>{{ aux.precio | intcomma }}</td>
+            <td>{{ aux.cantidad }}</td>
+            <td>{{ aux.descripcion }}</td>
+            <td>{{ aux.tipo }}</td>
+            {% if aux.imagen %}            
+            <td><img src="{{ aux.imagen.url }}" width="100px"></td>
+            {% endif %}
+            <td>{{ aux.fecha_ingreso }}</td>
+            <td>
+               <a href="{% url 'modificarProducto' aux.codigo %}" class="btn btn-primary">Modificar</a>
+               <a href="{% url 'eliminarproducto' aux.codigo %}" class="btn btn-danger">Eliminar</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

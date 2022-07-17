@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4" style="height: 68vh;">
+            </div>
+            <div class="col-sm-4 pt-5">
+                <div class="container">
+                    <h2 class="color-verde-oscuro pb-4">Inicie Sesión</h2>
+                    <form method="POST">
+                    {% csrf_token %}
+    			    {{ form | crispy }}
+    			    <button type="submit" class="btn btn-success mb-3">Iniciar sesión</button>
+                    <p class="">No tienes una cuenta? <a class="color-verde-oscuro" href="{% url 'registro_usuarios' %}">Regístrate</a></p>  
+                    </form>
+                  </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+{%endblock%}

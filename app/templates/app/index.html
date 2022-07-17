@@ -1,0 +1,110 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container-fluid mi-modal">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10 mt-5">
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-center">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+
+                        <!-- The slideshow -->
+                        <div>
+                            <div class="carousel-item active">
+                                <img class="img-carrousel" src="{% static 'app/img/perro1.png' %}" letraalt="perro1">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            <div class="carousel-item carrousel-img">
+                                <img class="img-carrousel" src="{% static 'app/img/perro2.png' %}" alt="perro2">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            <div class="carousel-item carrousel-img">
+                                <img class="img-carrousel" src="{% static 'app/img/perro3.png'%}" alt="perro3">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+     
+
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 pt-3">
+            <div class="jumbotron jumbotron-fluid bg-white">
+                <div class="container-fluid justify-content-center d-flex">
+                    <h2 class="letra-producto color-verde-oscuro">
+                        Nuestros Productos
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% load humanize %}
+
+
+        <div class="row">
+
+          {% for item in object_list %}
+          <div class="col-sm-3 mb-4">
+
+            <div class="card" style="width: 400px">
+
+              <div>
+                <img src="{{ item.imagen.url }}" class="card-img-top">
+              </div>
+
+              <div class="card-body text-center">
+                
+                <h5 class="color-verde-oscuro">{{ item.tipo }}</h5>
+                <h5>
+                  <strong>
+                    <a class="color-verde-oscuro" href="{{ item.get_absolute_url }}">{{ item.nombre }}
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold text-primary">
+                  <strong class="color-verde-oscuro">$
+                  {{ item.precio }}
+                  </strong>
+                </h4>
+
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+</div>
+
+
+
+{% endblock %}

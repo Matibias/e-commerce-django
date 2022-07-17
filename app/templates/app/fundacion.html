@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-izq" style="min-height: 80vh;">
+                <div class="row perfil">
+                    <div class="col-sm-12 d-flex justify-content-center">
+                        <img class="avatar mt-3" src="{% static 'app/img/perfil-icono.png' %}" alt="">
+                    </div>
+                    <div class="col-sm-12 mt-1 d-flex justify-content-center">
+                        <h6>Bienvenido: UsuarioX</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-pills flex-column mt-3">
+                            <li class="nav-item activo rounded mt-1">
+                                <a class="nav-link" href="{% url 'perfil' %}"><i class="fa-solid fa-home"></i> Perfil</a>
+                            </li>
+                            <li class="nav-item mt-4">
+                                <a class="nav-link" href="{% url 'historial' %}"><i class="fa-solid fa-clock-rotate-left"></i> Historial</a>
+                            </li>
+                            <li class="nav-item mt-4">
+                                <a class="nav-link" href="{% url 'seguimiento' %}"><i class="fa-solid fa-truck"></i> Seguimiento</a>
+                            </li>
+                            <li class="nav-item mt-4">
+                                <a class="nav-link" href="{% url 'fundacion' %}"><i class="fa-solid fa-bookmark"></i> Fundación</a>
+                            </li>
+                            <hr><hr>
+                            <li class="nav-item mt-5">
+                                <a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-right-to-bracket"></i> Cerrar
+                                    Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="container mt-5 text-center">
+                        <img class="adopta mt-3" src="{% static 'app/img/logo.png' %}" alt="" height="300px" width="350px">
+                        <h2 class="perritos-fund text-center mt-5 mb-4">Fundacion sin fines de lucro</h2>
+                        <p class="mb-5"> Somos un grupo de amigas que comenzó a realizar la venta de productos para mascotas como bandanas, correas e
+                        identificaciones, todo esto para ayudar a una fundación sin fines de lucro, si usted desea suscribirse a la fundacion con una donacion se le otorgara un 5% de descuento en sus compras totales</p> 
+                        <h4 class="gracias text-center"> Muchas Gracias!!!♡</h4>
+                        {% for sub in object %}
+                        
+                            <a href="{% url 'subscribirse' %}" class="btn btn-success">sub</a>
+                            <button type="button" class="btn btn-danger">nosub</button>
+                        
+                    </div>
+                </div>
+           </div>
+        </div>
+        {%endblock%}

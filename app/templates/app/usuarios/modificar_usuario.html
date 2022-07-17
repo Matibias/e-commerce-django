@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block css %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.css" integrity="sha512-40/Lc5CTd+76RzYwpttkBAJU68jKKQy4mnPI52KKOHwRBsGcvQct9cIqpWT/XGLSsQFAcuty1fIuNgqRoZTiGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{form | crispy}}
+                </table>
+                <input type="submit" class="btn btn-success" value="Modificar">
+            </form>
+            {% if messages %}
+                {% for msj in messages %}
+                    <script>
+                        Swal.fire({
+                            title: 'Modificado!',
+                            text: '{{ msj }}',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    </script>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

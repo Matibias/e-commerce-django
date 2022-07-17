@@ -1,0 +1,94 @@
+.letra-navbar{
+    font-size: 20px;
+    color: rgb(41, 41, 41);
+}
+
+.img-carrousel {
+    width: 1685px;
+    height: 750px;
+    background-size: cover;
+}
+
+.img-producto {
+    width: 280px;
+    height: 250px;
+}
+
+.letra-producto {
+    font-weight: bold;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+
+:root {
+    --color-verde-claro: rgb(229, 236, 150);
+    --color-verde-oscuro: rgb(84, 146, 31);
+}
+
+.color-verde {
+    background: var(--color-verde-oscuro);
+}
+
+.color-verde-oscuro {
+    color: var(--color-verde-oscuro);
+}
+
+.borde {
+    border: 1px solid var(--color-verde-oscuro);
+    border-radius: 0px;
+}
+
+.fondo {
+    background: var(--color-verde-oscuro);
+    color: white;
+    width: 100%;
+    border-radius: 0%;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+/*rgb(178, 194, 1)*/
+
+.col-izq {
+    background-image: url(../img/fondo-perfil2.png);
+    color: white;
+
+
+}
+
+.nav-link {
+    color: white;
+    font-size: 20px;
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+.nav-link:hover {
+    background-color: grey;
+    color: white; 
+}
+
+h6 {
+    font-size: 20px;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-carrito{
+    
+    margin-top: -26px;
+    margin-left: 39.1vw;
+    max-height: 100%;
+    height: 90vh;
+    width: 450px;
+}
+
+.modal-producto {
+    width: 750px;
+
+}

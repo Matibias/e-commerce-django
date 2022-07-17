@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-izq" style="min-height: 80vh;">
+            <div class="row perfil">
+                <div class="col-sm-12 d-flex justify-content-center">
+                    <img class="avatar mt-3" src="{% static 'app/img/perfil-icono.png' %}" alt="">
+                </div>
+                <div class="col-sm-12 mt-1 d-flex justify-content-center">
+                {% if user.is_authenticated %}
+                    <h6>Bienvenido:  {{ user.username }}</h6>
+                {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="nav nav-pills flex-column mt-3">
+                        <li class="nav-item activo rounded mt-1">
+                            <a class="nav-link" href="{% url 'perfilcrud_productos' %}"><i class="fa-solid fa-list-ul"></i> Crud productos</a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link" href="{% url 'perfilcrud_users' %}"><i class="fa-solid fa-user-pen"></i> Crud usuarios</a>
+                        </li>
+                        <hr><hr>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i> Cerrar
+                                Sesión</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-3 d-flex justify-content-around  pt-5 mt-5 align-items-center">
+                    <div class="card" style="width:200px; border: none">
+                        <img class="card-img-top" src="{% static 'app/img/listar_ussers.png' %}" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">Listar Productos</h4>
+                          <p class="card-text">Listar los productos de la tienda</p>
+                          <a href="{% url 'listarproducto' %}" class="btn fondo">Ir</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-3 d-flex justify-content-around  pt-5 mt-5 align-items-center">
+                    <div class="card" style="width:200px; border: none">
+                        <img class="card-img-top" src="{% static 'app/img/add_productoo.png' %}" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">Agregar Productos</h4>
+                          <p class="card-text">Añadir nuevos productos a mi tienda</p>
+                          <a href="{% url 'agregarproducto' %}" class="btn fondo">Ir</a>
+                        </div>
+                      </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+        {%endblock%}

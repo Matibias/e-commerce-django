@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            
+            {% load humanize %}
+            <table class="table table-condensed table-striped">
+                <thead>  
+                    <tr>
+                        <th>#</th>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for orden_item in object.items.all %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        {% if orden_item.item.imagen %}            
+                        <td><img src="{{ orden_item.item.imagen.url }}" width="50px"></td>
+                        {% endif %}
+                        <td>{{ orden_item.item.nombre | title }}</td>
+                        <td>{% if orden_item.item.precio_descuento %}
+                                ${{orden_item.item.precio_descuento| intcomma}}
+                            {% else %}
+                                ${{ orden_item.item.precio | intcomma }}</td>
+                            {% endif %}
+                        <td>
+                            <a href="{% url 'remover_unidad_producto' orden_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                            {{ orden_item.cantidad }}
+                            <a href="{% url 'agregar_carrito' orden_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                        </td>
+                        <td>
+                        {% if orden_item.item.precio_descuento %}
+                            ${{ orden_item.get_precio_descuento_total_producto }}
+                        {% else %}
+                            ${{ orden_item.get_precio_total_producto }}
+                        {% endif %}
+                        <a style='color: rgb(201, 29, 29);' href="{% url 'borrar_carrito' orden_item.item.slug %}">
+                            <i class="fas fa-trash float-right"></i>
+                        </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan='6'>El carrito esta vacio</td>
+                    </tr>
+                    
+                    {% endfor %}
+
+                </tbody>
+            </table>
+                    
+        </div>
+        {% if object.get_total %}           
+        <div class="col-sm-4 mt-3">
+            
+            <h5><b> Total Orden: ${{object.get_total| intcomma}}</b></h5>
+           
+            <a class="btn btn-primary mt-2" href="{% url 'index' %}">Seguir Comprando</a>
+            <a class="btn btn-primary mt-2" href="{% url 'compra_carrito' %}">Comprar</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{%endblock%}
+    

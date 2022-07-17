@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container-fluid">
+    <div class="row pb-5">
+        <div class="col-sm-2" style="min-height: 80vh;">
+        </div>
+
+        {% load humanize %}
+        <div class="col-sm-8 pt-2 pl-5 text-white">
+            <div class="row d-flex">
+                {% for digimon in listaDigimon %}
+                <div class="col-sm-6 text-center pt-4">
+                {% if digimon.img %}
+                    <img class="img-producto" src="{{ digimon.img }}" alt="">
+                {% endif %}
+                    <hr>
+                    <h3 class="color-verde-oscuro text-center">
+                        {{digimon.name | title}}
+                    </h3>
+                    
+                    <h5 class="color-verde-oscuro">
+                        Level: {{ digimon.level }}
+                    </h5>
+                    <br>
+                    <a href="#" class="btn fondo" role="button" data-toggle="modal"
+                         data-target="#modal-bandana">Agregar
+                        al carrito</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-2" style="min-height: 80vh;">
+        </div>
+    </div>
+
+</div>
+{%endblock%}

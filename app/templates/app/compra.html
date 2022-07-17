@@ -1,0 +1,154 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+
+      <h2 class="my-5 h2 text-center">Carrito de compras</h2>
+
+      <div class="row">
+
+        <div class="col-md-12 mb-4">
+
+          <div class="card">
+
+            <form class="card-body">
+
+            <div class="md-form mb-5">
+                <input type="text" id="address" class="form-control" placeholder="Plazuela Puente Alto">
+                <label for="address" class="">Dirección</label>
+            </div>
+              <!--Grid row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <label for="ciudad">Ciudad</label>
+                    <select class="custom-select d-block w-100" id="ciudad" required>
+                    <option value="">Seleccione su ciudad</option>
+                    <option>Santiago</option>
+                </select>
+                <div class="invalid-feedback">
+                    Porfavor seleccione una ciudad valida.
+                </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                  <label for="comuna">Comuna</label>
+                  <select class="custom-select d-block w-100" id="comuna" required>
+                    <option value="">Seleccione su comuna</option>
+                    <option>Punete Alto</option>
+                    <option>La Granja</option>
+                    <option>La Pintana</option>
+                    <option>Lo espejo</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Porfavor seleccione una comuna valida.
+                  </div>
+
+                </div>
+               
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                  <label for="zip">Codigo Postal</label>
+                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Codigo postal requerido.
+                  </div>
+
+                </div>
+
+              </div>
+
+              <hr>
+
+              <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                  <label class="custom-control-label" for="credit">Tarjeta de credito</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="debit">Tarjeta de debito</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="paypal">Paypal</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Nombre del titular</label>
+                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                  <div class="invalid-feedback">
+                    El nombre del titular es requerido
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cc-number">Número tarjeta</label>
+                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Numero de la tarjeta es requerido
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">Fecha vencimiento</label>
+                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Datos de expiracion es requerido
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">CVV</label>
+                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Codigo de seguridad requerido
+                  </div>
+                </div>
+              </div>
+              <hr class="mb-4">
+              {% for orden_item in object.items.all %}
+            
+            <a class="btn btn-success btn-lg btn-block" href="{% url 'comprar_producto' orden_item.item.slug %}">Comprar</a>
+            <!--<button class="btn btn-primary btn-lg btn-block" type="submit">Comprar</button>-->
+            {% endfor %}
+
+            </form>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        
+          
+
+          <!-- Promo code -->
+          <!--<form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Codigo promocional" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Canjear</button>
+              </div>
+            </div>
+          </form>-->
+          
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+{%endblock%}
+    
